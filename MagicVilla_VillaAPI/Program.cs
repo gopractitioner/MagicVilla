@@ -1,3 +1,4 @@
+using MagicVilla_VillaAPI.Logging;
 using MagicVilla_VillaAPI.Models;
 using Serilog;
 
@@ -13,7 +14,7 @@ builder.Host.UseSerilog();
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddSingleton<ILogging, Logging>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
