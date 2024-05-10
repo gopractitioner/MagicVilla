@@ -12,17 +12,17 @@ namespace MagicVilla_VillaAPI.Controllers;
 [ApiController]
 public class VillaApiController : ControllerBase
 {
-    private readonly ILogging _logger;
-
+    private readonly ILogging _Logger;
     public VillaApiController(ILogging logger)
     {
-        _logger = logger;
+        _Logger = logger;
     }
+  
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public ActionResult<IEnumerable<VillaDto>> GetVillas()
     {
-        _logger.Log("Getting all villas" , "");
+        _Logger.Log("Getting all villas", "");
         return Ok(VillaStore.VillaList);
     }
 
@@ -34,7 +34,7 @@ public class VillaApiController : ControllerBase
     {
         if (id == 0)
         {
-            _logger.Log("Get villa Error - id is " + id,"error");
+            _Logger.Log($"Get villa Error: Id is {id}", "error");
             return BadRequest();
         }
 
